@@ -14,6 +14,13 @@ namespace OnBoardSystem.Views
 {
     public partial class MainWindow : Window
     {
+        #region Variable initialization.
+        //LocomotiveSafetySystemFolder => "C:\Users\%username%\Documents\LocomotiveSafetySystem"
+        readonly string LocomotiveSafetySystemFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LocomotiveSafetySystem");
+        //Current active view indicator
+        string CurrentView = "InitialView";
+        #endregion
+
         public MainWindow()
         {
             InitializeComponent();
