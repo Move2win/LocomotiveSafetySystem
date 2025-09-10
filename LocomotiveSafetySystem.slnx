@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="OnBoardSystem/OnBoardSystem.csproj" />
+  <Project Path="ServerCLI/ServerCLI.csproj" />
+</Solution>
