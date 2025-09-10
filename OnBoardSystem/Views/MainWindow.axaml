@@ -1,0 +1,216 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:OnBoardSystem.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="OnBoardSystem.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+		Title="Locomotive Safety System"
+        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="900"
+		WindowStartupLocation="CenterScreen"
+        Width="1024" Height="900"
+        Background="Black"
+        CanResize="False">
+
+	<Window.Styles>
+		<Style Selector="Grid">
+			<Setter Property="ShowGridLines" Value="True"/>
+		</Style>
+		<Style Selector="TextBox.DigitBox">
+			<Setter Property="FontFamily" Value="Arial"/>
+			<Setter Property="FontSize" Value="40"/>
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="Margin" Value="5, 30, 5, 60"/>
+			<Setter Property="Text" Value="*"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Width" Value="60"/>
+			<Setter Property="Height" Value="60"/>
+			<Setter Property="Focusable" Value="False"/>
+		</Style>
+		<Style Selector="Button.MenuButton">
+			<Setter Property="FontSize" Value="30"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Width" Value="100"/>
+			<Setter Property="Height" Value="70"/>
+			<Setter Property="Background" Value="Gray"/>
+			<Setter Property="Opacity" Value="0.2"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+	</Window.Styles>
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid RowDefinitions="768, *">
+		<!--Normal GUI-->
+		<Grid Grid.Row="0">
+			<Grid RowDefinitions="0.26*, *, 0.15*">
+				<!--*****-->
+				<!--GridRow 0: Key Info Indicator-->
+				<!--*****-->
+				<Grid Grid.Row="0" ColumnDefinitions="*, 1.5*, *">
+					<!--Column 0: Date and Time-->
+					<StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Spacing="8">
+						<TextBlock Name="TxtDate" Text="" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+						<TextBlock Name="TxtTime" Text="" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+					</StackPanel>
+					<!--Column 1: Speed, Acceleration and Limit Speed-->
+					<StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+						<TextBlock Name="TxtSpeed" Text="0.0 KM/H" FontSize="50" HorizontalAlignment="Center" Foreground="Green"/>
+						<TextBlock Name="TxtAcceleration" Text="▲ 0.0 KM/H/sec" FontSize="28" HorizontalAlignment="Center" Foreground="Green" Margin="0, -5, 0, 5"/>
+						<TextBlock Name="TxtLimiteSpeed" Text="********" FontSize="35" HorizontalAlignment="Center" Foreground="White" Padding="50, 0, 50, 0" Background="Black"/>
+					</StackPanel>
+					<!--Colunm 2: Train Number and Location-->
+					<StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Spacing="8">
+						<TextBlock Name="TxtTrainNumber" Text="X0000" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+						<TextBlock Name="TxtDestination" Text="DESTINATION" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+					</StackPanel>
+				</Grid>
+				<!--*****-->
+				<!--GridRow 1: Chart and Warning Info-->
+				<!--*****-->
+				<Panel Grid.Row="1">
+					<!--Initial View-->
+					<TextBlock Name="InitialView" IsVisible="True" Text="This device is initialized and has not been registered.&#xA; &#xA;Press &quot;Start&quot; to create a registration code." FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Background="Blue" Padding="10, 80, 10, 80" TextAlignment="Center" TextWrapping="Wrap"/>
+					<!--Device Register View-->
+					<StackPanel Name="RegisterView" IsVisible="False">
+						<TextBlock Name="TxtDeviceRegisterCode" Text="Device register code is:&#xA; &#xA;X72B-NW8G-BSL4-VOJK" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Padding="10, 50, 10, 80" TextAlignment="Center" TextWrapping="Wrap"/>
+						<TextBlock Text="Server IP Address:" FontSize="30" Foreground="White" TextAlignment="Center"/>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<TextBox Classes="DigitBox" Name="IPBox1" Background="Blue"/>
+							<TextBox Classes="DigitBox" Name="IPBox2"/>
+							<TextBox Classes="DigitBox" Name="IPBox3"/>
+							<TextBlock Text="." FontSize="30" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
+							<TextBox Classes="DigitBox" Name="IPBox4"/>
+							<TextBox Classes="DigitBox" Name="IPBox5"/>
+							<TextBox Classes="DigitBox" Name="IPBox6"/>
+							<TextBlock Text="." FontSize="30" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
+							<TextBox Classes="DigitBox" Name="IPBox7"/>
+							<TextBox Classes="DigitBox" Name="IPBox8"/>
+							<TextBox Classes="DigitBox" Name="IPBox9"/>
+							<TextBlock Text="." FontSize="30" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
+							<TextBox Classes="DigitBox" Name="IPBox10"/>
+							<TextBox Classes="DigitBox" Name="IPBox11"/>
+							<TextBox Classes="DigitBox" Name="IPBox12"/>
+						</StackPanel>
+					</StackPanel>
+					<!--Manifest Login View-->
+					<StackPanel Name="ManifestLoginView" IsVisible="False">
+						<TextBlock Text="Manifest Number:" FontSize="50" HorizontalAlignment="Left" Foreground="White" Margin="40, 200, 10, 20" TextAlignment="Center"/>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40, 0, 10, 80">
+							<TextBox Classes="DigitBox" Name="ManifestBox1" Text="0" Background="Blue"/>
+							<TextBox Classes="DigitBox" Name="ManifestBox2" Text="0"/>
+							<TextBox Classes="DigitBox" Name="ManifestBox3" Text="0"/>
+							<TextBox Classes="DigitBox" Name="ManifestBox4" Text="0"/>
+						</StackPanel>
+					</StackPanel>
+					<!--Opration View-->
+					<Grid Name="OprationView" IsVisible="False" RowDefinitions="1.2*, 0.8*, 0.4*">
+						<!--GridRow 0: Opration Chart-->
+						<Canvas Grid.Row="0" Name="OprationChart" Background="Black" Width="840" Height="250" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0">
+							<Rectangle Name="RailLine" Canvas.Left="-10" Canvas.Top="125" Fill="Gray" Width="870" Height="2" Opacity="0.6"/>
+							<Rectangle Name="Locomotive" Canvas.Left="-150" Canvas.Top="115.5" Fill="Blue" Width="150" Height="20" RadiusX="10" RadiusY="12"/>
+							<Rectangle Name="BrakeLine" Canvas.Left="10" Canvas.Top="0" Fill="Red" Width="2" Height="250"/>
+							<Rectangle Name="WarningLine" Canvas.Left="15" Canvas.Top="0" Fill="Yellow" Width="2" Height="250"/>
+							<Rectangle Name="BlockSignal1" IsVisible="True" Canvas.Left="840" Canvas.Top="115.5" Fill="Red" Width="20" Height="20" RadiusX="10" RadiusY="10"/>
+							<Rectangle Name="BlockSignal2" IsVisible="True" Canvas.Left="500" Canvas.Top="115.5" Fill="Yellow" Width="20" Height="20" RadiusX="10" RadiusY="10"/>
+							<Rectangle Name="BlockSignal3" IsVisible="True" Canvas.Left="0" Canvas.Top="115.5" Fill="Green" Width="20" Height="20" RadiusX="10" RadiusY="10"/>
+							<Rectangle Name="BlockSignal4" IsVisible="True" Canvas.Left="-500" Canvas.Top="115.5" Fill="Red" Width="20" Height="20" RadiusX="10" RadiusY="10"/>
+						</Canvas>
+						<!--GridRow 1: Opration Info-->
+						<Grid Grid.Row="1" ColumnDefinitions="2.5*, *">
+							<!--Column 0: Distance Info-->
+							<StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="8" Margin="20, 0, 0, 0">
+								<TextBlock Name="TxtBrakeApplicationDistance" Text="Brake Distance:      487M" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+								<TextBlock Name="TxtWarningDistance" Text="Warning Distance:  623M" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+								<TextBlock Name="TxtSignal" Text="Next Signal:            Stop, 0KM/H, 503M" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+								<TextBlock Name="TxtMilepost" Text="Milepost:                 276KM+897 Northbound" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+							</StackPanel>
+							<!--Column 1: Warning Light Info-->
+							<Grid Grid.Column="1" ColumnDefinitions="*, *" Background="DarkGreen">
+								<!--Column 0: Left-->
+								<StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="16">
+									<Label Name="TxtEOTDLight" Content="EOTD" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray" Background="Black"/>
+									<Label Name="TxtDefectLight" Content="Defect" Width="120" Height="70" FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray" Background="Black"/>
+								</StackPanel>
+								<!--Column 1: Right-->
+								<StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="16">
+									<Label Name="TxtPCSLight" Content="PCS" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Background="Red"/>
+									<Label Name="TxtEBLight" Content="EB" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray" Background="Black"/>
+								</StackPanel>
+							</Grid>
+						</Grid>
+						<!--GridRow 2: Big Warning Info Banner-->
+						<Canvas IsVisible="True" Name="BannerBackground" Grid.Row="2" Background="Red">
+							<TextBlock IsVisible="True" Name="TxtBigRedWarning" Canvas.Left="103.5" Canvas.Top="15" Text="WARNING: Full Brake Application!" FontSize="50" FontWeight="Bold" Foreground="White" TextAlignment="Center"/>
+							<TextBlock IsVisible="False" Name="TxtBigYellowWarning" Canvas.Left="155" Canvas.Top="15" Text="WARNING: Stop Signal Ahead!" FontSize="50" FontWeight="Bold" Foreground="Black" TextAlignment="Center"/>
+						</Canvas>
+					</Grid>
+					<!--Menu View-->
+					<StackPanel Name="MenuView" IsVisible="False">
+						<TextBlock Text="Menu" FontSize="50" HorizontalAlignment="Center" Foreground="White" Margin="0, 20, 0, 20"/>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<Button Classes="MenuButton" Content="1"/>
+							<Button Classes="MenuButton" Content="2"/>
+							<Button Classes="MenuButton" Content="3"/>
+							<Button Classes="MenuButton" Content="4"/>
+							<Button Classes="MenuButton" Content="5"/>
+							<Button Classes="MenuButton" Content="6"/>
+							<Button Classes="MenuButton" Content="7"/>
+							<Button Classes="MenuButton" Content="8"/>
+						</StackPanel>
+					</StackPanel>
+				</Panel>
+				<!--*****-->
+				<!--GridRow 2: Control Button-->
+				<!--*****-->
+				<StackPanel Grid.Row="2" Width="900" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="14" Background="Black">
+					<!--Click="MenuButton1_Click"
+					Click="MenuButton2_Click"
+					Click="MenuButton3_Click"
+					Click="MenuButton4_Click"
+					Click="MenuButton5_Click"
+					Click="MenuButton6_Click"
+					Click="MenuButton7_Click"
+					Click="MenuButton8_Click"-->
+					<Button Classes="MenuButton" Name="MenuButton1"  Content="▲"/>
+					<Button Classes="MenuButton" Name="MenuButton2"  Content="▼"/>
+					<Button Classes="MenuButton" Name="MenuButton3"  Content="◀"/>
+					<Button Classes="MenuButton" Name="MenuButton4"  Content="▶"/>
+					<Button Classes="MenuButton" Name="MenuButton5"  Content="Start" Background="Blue" Opacity="1"/>
+					<Button Classes="MenuButton" Name="MenuButton6"  Content=""/>
+					<Button Classes="MenuButton" Name="MenuButton7"  Content=""/>
+					<Button Classes="MenuButton" Name="MenuButton8"  Content="Menu" Background="Green" Opacity="1"/>
+				</StackPanel>
+			</Grid>
+		</Grid>
+		<!--Testing GUI-->
+		<Grid Grid.Row="1" Background="#d4d4d4">
+			<Grid ColumnDefinitions="*, *">
+				<Grid Grid.Column="0" ColumnDefinitions="0.4*, *" RowDefinitions="*, *">
+					<Label Content="Throttle" Grid.Column="0" Grid.Row="0" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<Slider Name="SliderThrottle"  Grid.Column="1" Grid.Row="0" Minimum="0" Maximum="100" Value="0" Width="300" Height="50"/>
+					<!--ValueChanged="SliderThrottle_ValueChanged"-->
+					<Label Content="Brake" Grid.Column="0" Grid.Row="1" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<!--ValueChanged="SliderBrake_ValueChanged"-->
+					<Slider Name="SliderBrake"  Grid.Column="1" Grid.Row="1" Minimum="0" Maximum="100" Value="0" Width="300" Height="50"/>
+				</Grid>
+				<Grid Grid.Column="1" ColumnDefinitions="*, *, *" RowDefinitions="*, *">
+					<Button Grid.Column="0" Grid.Row="0" FontSize="20" Content="Reverser" HorizontalAlignment="Center"/>
+					<Button Grid.Column="0" Grid.Row="1" FontSize="20" Content="Instant Halt" HorizontalAlignment="Center"/>
+					<Button Grid.Column="1" Grid.Row="0" FontSize="20" Content="Emergency" HorizontalAlignment="Center"/>
+					<Button Grid.Column="1" Grid.Row="1" FontSize="20" Content="EOTD Toggle" HorizontalAlignment="Center"/>
+					<Button Grid.Column="2" Grid.Row="0" FontSize="20" Content="PCS Reset" HorizontalAlignment="Center"/>
+					<Button Grid.Column="2" Grid.Row="1" FontSize="20" Content="SW Reset" HorizontalAlignment="Center"/>
+				</Grid>
+			</Grid>
+		</Grid>
+	</Grid>
+
+</Window>
