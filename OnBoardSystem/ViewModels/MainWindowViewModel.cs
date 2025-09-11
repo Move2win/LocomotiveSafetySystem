@@ -17,6 +17,26 @@ namespace OnBoardSystem.ViewModels
 
         public MainWindowViewModel()
         {
+            //Set clock timer interval to 1 seconds.
+            Timer ClockTimer = new(OnClockTimerTick, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+            //Set Opration view UI refreash timer interval to 500 milliseconds.
+            Timer OprationViewTimer = new(OnOprationViewTimerTick, null, TimeSpan.Zero, TimeSpan.FromSeconds(0.5));
         }
+
+        #region UI refreash timers.
+        //Clock timer refreash method.
+        private void OnClockTimerTick(object? state)
+        {
+            TxtDate = DateTime.Now.ToString("yyyy/MM/dd");
+            TxtTime = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        //OprationView refreash method.
+        private void OnOprationViewTimerTick(object? state)
+        {
+
+        }
+        #endregion
+
     }
 }
