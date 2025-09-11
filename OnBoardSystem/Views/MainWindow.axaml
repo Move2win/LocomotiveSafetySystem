@@ -56,14 +56,14 @@
 				<!--*****-->
 				<Grid Grid.Row="0" ColumnDefinitions="*, 1.5*, *">
 					<!--Column 0: Date and Time-->
-					<StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Spacing="8">
-						<TextBlock Name="TxtDate" Text="" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
-						<TextBlock Name="TxtTime" Text="" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+					<StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Spacing="-2">
+						<TextBlock Name="TxtDate" Text="{Binding CurrentDate}" FontFamily="FixedWidthFont" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+						<TextBlock Name="TxtTime" Text="{Binding CurrentTime}" FontFamily="FixedWidthFont" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
 					</StackPanel>
 					<!--Column 1: Speed, Acceleration and Limit Speed-->
-					<StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-						<TextBlock Name="TxtSpeed" Text="0.0 KM/H" FontSize="50" HorizontalAlignment="Center" Foreground="Green"/>
-						<TextBlock Name="TxtAcceleration" Text="▲ 0.0 KM/H/sec" FontSize="28" HorizontalAlignment="Center" Foreground="Green" Margin="0, -5, 0, 5"/>
+					<StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="-2">
+						<TextBlock Name="TxtSpeed" Text="{Binding TxtSpeed}" FontFamily="FixedWidthFont" FontSize="52" HorizontalAlignment="Center" Foreground="Green" Padding="0, -5, 0, 0"/>
+						<TextBlock Name="TxtAcceleration" Text="▲ 0.0 KM/H/sec" FontFamily="FixedWidthFont" FontSize="30" HorizontalAlignment="Center" Foreground="Green" Margin="0, -6, 0, 5"/>
 						<TextBlock Name="TxtLimiteSpeed" Text="********" FontSize="35" HorizontalAlignment="Center" Foreground="White" Padding="50, 0, 50, 0" Background="Black"/>
 					</StackPanel>
 					<!--Colunm 2: Train Number and Location-->

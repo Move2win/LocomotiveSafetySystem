@@ -12,4 +12,8 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+
+	<Application.Resources>
+		<FontFamily x:Key="FixedWidthFont">/Assets/MonospaceTypewriter.ttf</FontFamily>
+	</Application.Resources>
 </Application>
