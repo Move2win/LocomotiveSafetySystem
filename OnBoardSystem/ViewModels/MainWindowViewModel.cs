@@ -38,5 +38,203 @@ namespace OnBoardSystem.ViewModels
         }
         #endregion
 
+        #region Menu button events.
+        //Up
+        [RelayCommand]
+        public void MenuButton1_Click()
+        {
+            ViewSwitcher Views = new(this);
+            if (CurrentView == "InitialView")
+            {
+
+            }
+            else if (CurrentView == "RegisterView")
+            {
+
+            }
+            else if (CurrentView == "ManifestLoginView")
+            {
+
+            }
+            else if (CurrentView == "OprationView")
+            {
+                
+            }
+            else if (CurrentView == "MenuView")
+            {
+
+            }
+        }
+
+        //Down
+        [RelayCommand]
+        public void MenuButton2_Click()
+        {
+            ViewSwitcher Views = new(this);
+            if (CurrentView == "InitialView")
+            {
+
+            }
+            else if (CurrentView == "RegisterView")
+            {
+
+            }
+            else if (CurrentView == "ManifestLoginView")
+            {
+
+            }
+            else if (CurrentView == "OprationView")
+            {
+                
+            }
+            else if (CurrentView == "MenuView")
+            {
+
+            }
+        }
+
+        //Left
+        [RelayCommand]
+        public void MenuButton3_Click()
+        {
+            ViewSwitcher Views = new(this);
+            if (CurrentView == "InitialView")
+            {
+
+            }
+            else if (CurrentView == "RegisterView")
+            {
+
+            }
+            else if (CurrentView == "ManifestLoginView")
+            {
+
+            }
+            else if (CurrentView == "OprationView")
+            {
+
+            }
+            else if (CurrentView == "MenuView")
+            {
+
+            }
+        }
+
+        //Right
+        [RelayCommand]
+        public void MenuButton4_Click()
+        {
+            ViewSwitcher Views = new(this);
+            if (CurrentView == "InitialView")
+            {
+
+            }
+            else if (CurrentView == "RegisterView")
+            {
+
+            }
+            else if (CurrentView == "ManifestLoginView")
+            {
+
+            }
+            else if (CurrentView == "OprationView")
+            {
+
+            }
+            else if (CurrentView == "MenuView")
+            {
+
+            }
+        }
+
+        //Start, Comfirm
+        [RelayCommand]
+        public void MenuButton5_Click()
+        {
+            ViewSwitcher viewSwitcher = new(this);
+            viewSwitcher.SetupInitialView();
+        }
+
+        //Clear
+        [RelayCommand]
+        public void MenuButton6_Click()
+        {
+            ViewSwitcher Views = new(this);
+            if (CurrentView == "InitialView")
+            {
+
+            }
+            else if (CurrentView == "RegisterView")
+            {
+
+            }
+            else if (CurrentView == "ManifestLoginView")
+            {
+
+            }
+            else if (CurrentView == "OprationView")
+            {
+
+            }
+            else if (CurrentView == "MenuView")
+            {
+
+            }
+        }
+
+        //Not used
+        [RelayCommand]
+        public void MenuButton7_Click()
+        {
+            ViewSwitcher Views = new(this);
+            if (CurrentView == "InitialView")
+            {
+
+            }
+            else if (CurrentView == "RegisterView")
+            {
+
+            }
+            else if (CurrentView == "ManifestLoginView")
+            {
+
+            }
+            else if (CurrentView == "OprationView")
+            {
+
+            }
+            else if (CurrentView == "MenuView")
+            {
+
+            }
+        }
+
+        //Menu
+        [RelayCommand]
+        public void MenuButton8_Click()
+        {
+            ViewSwitcher Views = new(this);
+            if (CurrentView == "InitialView")
+            {
+
+            }
+            else if (CurrentView == "RegisterView")
+            {
+
+            }
+            else if (CurrentView == "ManifestLoginView")
+            {
+
+            }
+            else if (CurrentView == "OprationView")
+            {
+
+            }
+            else if (CurrentView == "MenuView")
+            {
+
+            }
+        }
+        #endregion
     }
 }

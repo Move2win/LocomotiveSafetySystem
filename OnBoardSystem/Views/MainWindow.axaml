@@ -179,14 +179,14 @@
 					Click="MenuButton6_Click"
 					Click="MenuButton7_Click"
 					Click="MenuButton8_Click"-->
-					<Button Classes="MenuButton" Name="MenuButton1"  Content="▲"/>
-					<Button Classes="MenuButton" Name="MenuButton2"  Content="▼"/>
-					<Button Classes="MenuButton" Name="MenuButton3"  Content="◀"/>
-					<Button Classes="MenuButton" Name="MenuButton4"  Content="▶"/>
-					<Button Classes="MenuButton" Name="MenuButton5"  Content="Start" Background="Blue" Opacity="1"/>
-					<Button Classes="MenuButton" Name="MenuButton6"  Content=""/>
-					<Button Classes="MenuButton" Name="MenuButton7"  Content=""/>
-					<Button Classes="MenuButton" Name="MenuButton8"  Content="Menu" Background="Green" Opacity="1"/>
+					<Button Classes="MenuButton" Name="MenuButton1" Command="{Binding MenuButton1_ClickCommand}" Content="▲"/>
+					<Button Classes="MenuButton" Name="MenuButton2" Command="{Binding MenuButton2_ClickCommand}" Content="▼"/>
+					<Button Classes="MenuButton" Name="MenuButton3" Command="{Binding MenuButton3_ClickCommand}" Content="◀"/>
+					<Button Classes="MenuButton" Name="MenuButton4" Command="{Binding MenuButton4_ClickCommand}" Content="▶"/>
+					<Button Classes="MenuButton" Name="MenuButton5" Command="{Binding MenuButton5_ClickCommand}" Content="Start" Background="Blue" Opacity="1"/>
+					<Button Classes="MenuButton" Name="MenuButton6" Command="{Binding MenuButton6_ClickCommand}" Content=""/>
+					<Button Classes="MenuButton" Name="MenuButton7" Command="{Binding MenuButton7_ClickCommand}" Content=""/>
+					<Button Classes="MenuButton" Name="MenuButton8" Command="{Binding MenuButton8_ClickCommand}" Content="Menu" Background="Green" Opacity="1"/>
 				</StackPanel>
 			</Grid>
 		</Grid>
