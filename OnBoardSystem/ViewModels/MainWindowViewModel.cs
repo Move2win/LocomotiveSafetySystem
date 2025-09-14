@@ -27,8 +27,8 @@ namespace OnBoardSystem.ViewModels
         //Clock timer refreash method.
         private void OnClockTimerTick(object? state)
         {
-            TxtDate = DateTime.Now.ToString("yyyy/MM/dd");
-            TxtTime = DateTime.Now.ToString("HH:mm:ss");
+            TxtDate_Text = DateTime.Now.ToString("yyyy/MM/dd");
+            TxtTime_Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         //OprationView refreash method.
