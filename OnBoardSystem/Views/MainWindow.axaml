@@ -77,9 +77,9 @@
 				<!--*****-->
 				<Panel Grid.Row="1">
 					<!--Initial View-->
-					<TextBlock Name="InitialView" IsVisible="True" Text="This device is initialized and has not been registered.&#xA; &#xA;Press &quot;Start&quot; to create a registration code." FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Background="Blue" Padding="10, 80, 10, 80" TextAlignment="Center" TextWrapping="Wrap"/>
+					<TextBlock Name="InitialView" IsVisible="{Binding InitialView_IsVisible}" Text="This device is initialized and has not been registered.&#xA; &#xA;Press &quot;Start&quot; to create a registration code." FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Background="Blue" Padding="10, 80, 10, 80" TextAlignment="Center" TextWrapping="Wrap"/>
 					<!--Device Register View-->
-					<StackPanel Name="RegisterView" IsVisible="False">
+					<StackPanel Name="RegisterView" IsVisible="{Binding RegisterView_IsVisible}">
 						<TextBlock Name="TxtDeviceRegisterCode" Text="Device register code is:&#xA; &#xA;X72B-NW8G-BSL4-VOJK" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Padding="10, 50, 10, 80" TextAlignment="Center" TextWrapping="Wrap"/>
 						<TextBlock Text="Server IP Address:" FontSize="30" Foreground="White" TextAlignment="Center"/>
 						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -101,7 +101,7 @@
 						</StackPanel>
 					</StackPanel>
 					<!--Manifest Login View-->
-					<StackPanel Name="ManifestLoginView" IsVisible="False">
+					<StackPanel Name="ManifestLoginView" IsVisible="{Binding ManifestLoginView_IsVisible}">
 						<TextBlock Text="Manifest Number:" FontSize="50" HorizontalAlignment="Left" Foreground="White" Margin="40, 200, 10, 20" TextAlignment="Center"/>
 						<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40, 0, 10, 80">
 							<TextBox Classes="DigitBox" Name="ManifestBox1" Text="0" Background="Blue"/>
@@ -111,13 +111,13 @@
 						</StackPanel>
 					</StackPanel>
 					<!--Opration View-->
-					<Grid Name="OprationView" IsVisible="False" RowDefinitions="1.2*, 0.8*, 0.4*">
+					<Grid Name="OprationView" IsVisible="{Binding OprationView_IsVisible}" RowDefinitions="1.2*, 0.8*, 0.4*">
 						<!--GridRow 0: Opration Chart-->
 						<Canvas Grid.Row="0" Name="OprationChart" Background="Black" Width="840" Height="250" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0">
 							<Rectangle Name="RailLine" Canvas.Left="-10" Canvas.Top="125" Fill="Gray" Width="870" Height="2" Opacity="0.6"/>
 							<Rectangle Name="Locomotive" Canvas.Left="-150" Canvas.Top="115.5" Fill="Blue" Width="150" Height="20" RadiusX="10" RadiusY="12"/>
-							<Rectangle Name="BrakeLine" Canvas.Left="10" Canvas.Top="0" Fill="Red" Width="2" Height="250"/>
-							<Rectangle Name="WarningLine" Canvas.Left="15" Canvas.Top="0" Fill="Yellow" Width="2" Height="250"/>
+							<Rectangle Name="BrakeLine" Canvas.Left="{Binding BrakeLineCanvas_Left}" Canvas.Top="0" Fill="Red" Width="2" Height="250"/>
+							<Rectangle Name="WarningLine" Canvas.Left="{Binding WarningLineCanvas_Left}" Canvas.Top="0" Fill="Yellow" Width="2" Height="250"/>
 							<Rectangle Name="BlockSignal1" IsVisible="True" Canvas.Left="840" Canvas.Top="115.5" Fill="Red" Width="20" Height="20" RadiusX="10" RadiusY="10"/>
 							<Rectangle Name="BlockSignal2" IsVisible="True" Canvas.Left="500" Canvas.Top="115.5" Fill="Yellow" Width="20" Height="20" RadiusX="10" RadiusY="10"/>
 							<Rectangle Name="BlockSignal3" IsVisible="True" Canvas.Left="0" Canvas.Top="115.5" Fill="Green" Width="20" Height="20" RadiusX="10" RadiusY="10"/>
@@ -127,33 +127,33 @@
 						<Grid Grid.Row="1" ColumnDefinitions="2.5*, *">
 							<!--Column 0: Distance Info-->
 							<StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="8" Margin="20, 0, 0, 0">
-								<TextBlock Name="TxtBrakeApplicationDistance" Text="Brake Distance:      487M" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
-								<TextBlock Name="TxtWarningDistance" Text="Warning Distance:  623M" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
-								<TextBlock Name="TxtSignal" Text="Next Signal:            Stop, 0KM/H, 503M" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
-								<TextBlock Name="TxtMilepost" Text="Milepost:                 276KM+897 Northbound" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+								<TextBlock Name="TxtBrakeApplicationDistance" Text="{Binding TxtBrakeApplicationDistance_Text}" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+								<TextBlock Name="TxtWarningDistance" Text="{Binding TxtWarningDistance_Text}" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+								<TextBlock Name="TxtSignal" Text="{Binding TxtSignal_Text}" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
+								<TextBlock Name="TxtMilepost" Text="{Binding TxtMilepost_Text}" FontSize="30" HorizontalAlignment="Left" Foreground="White"/>
 							</StackPanel>
 							<!--Column 1: Warning Light Info-->
 							<Grid Grid.Column="1" ColumnDefinitions="*, *" Background="DarkGreen">
 								<!--Column 0: Left-->
 								<StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="16">
-									<Label Name="TxtEOTDLight" Content="EOTD" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray" Background="Black"/>
-									<Label Name="TxtDefectLight" Content="Defect" Width="120" Height="70" FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray" Background="Black"/>
+									<Label Name="TxtEOTDLight" Content="EOTD" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding TxtEOTDLight_Foreground}" Background="{Binding TxtEOTDLight_Background}"/>
+									<Label Name="TxtDefectLight" Content="Defect" Width="120" Height="70" FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding TxtDefectLight_Foreground}" Background="{Binding TxtDefectLight_Background}"/>
 								</StackPanel>
 								<!--Column 1: Right-->
 								<StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="16">
-									<Label Name="TxtPCSLight" Content="PCS" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Background="Red"/>
-									<Label Name="TxtEBLight" Content="EB" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray" Background="Black"/>
+									<Label Name="TxtPCSLight" Content="PCS" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding TxtPCSLight_Foreground}" Background="{Binding TxtPCSLight_Background}"/>
+									<Label Name="TxtEBLight" Content="EB" Width="120" Height="70" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding TxtEBLight_Foreground}" Background="{Binding TxtEBLight_Background}"/>
 								</StackPanel>
 							</Grid>
 						</Grid>
 						<!--GridRow 2: Big Warning Info Banner-->
-						<Canvas IsVisible="True" Name="BannerBackground" Grid.Row="2" Background="Red">
-							<TextBlock IsVisible="True" Name="TxtBigRedWarning" Canvas.Left="103.5" Canvas.Top="15" Text="WARNING: Full Brake Application!" FontSize="50" FontWeight="Bold" Foreground="White" TextAlignment="Center"/>
-							<TextBlock IsVisible="False" Name="TxtBigYellowWarning" Canvas.Left="155" Canvas.Top="15" Text="WARNING: Stop Signal Ahead!" FontSize="50" FontWeight="Bold" Foreground="Black" TextAlignment="Center"/>
+						<Canvas IsVisible="{Binding BannerBackground_IsVisible}" Name="BannerBackground" Grid.Row="2" Background="Red">
+							<TextBlock IsVisible="{Binding TxtBigRedWarning_IsVisible}" Name="TxtBigRedWarning" Canvas.Left="103.5" Canvas.Top="15" Text="WARNING: Full Brake Application!" FontSize="50" FontWeight="Bold" Foreground="White" TextAlignment="Center"/>
+							<TextBlock IsVisible="False" Name="{Binding TxtBigYellowWarning_IsVisible}" Canvas.Left="155" Canvas.Top="15" Text="WARNING: Stop Signal Ahead!" FontSize="50" FontWeight="Bold" Foreground="Black" TextAlignment="Center"/>
 						</Canvas>
 					</Grid>
 					<!--Menu View-->
-					<StackPanel Name="MenuView" IsVisible="False">
+					<StackPanel Name="MenuView" IsVisible="{Binding MenuView_IsVisible}">
 						<TextBlock Text="Menu" FontSize="50" HorizontalAlignment="Center" Foreground="White" Margin="0, 20, 0, 20"/>
 						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 							<Button Classes="MenuButton" Content="1"/>
@@ -171,22 +171,14 @@
 				<!--GridRow 2: Control Button-->
 				<!--*****-->
 				<StackPanel Grid.Row="2" Width="900" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="14" Background="Black">
-					<!--Click="MenuButton1_Click"
-					Click="MenuButton2_Click"
-					Click="MenuButton3_Click"
-					Click="MenuButton4_Click"
-					Click="MenuButton5_Click"
-					Click="MenuButton6_Click"
-					Click="MenuButton7_Click"
-					Click="MenuButton8_Click"-->
-					<Button Classes="MenuButton" Name="MenuButton1" Command="{Binding MenuButton1_ClickCommand}" Content="▲"/>
-					<Button Classes="MenuButton" Name="MenuButton2" Command="{Binding MenuButton2_ClickCommand}" Content="▼"/>
-					<Button Classes="MenuButton" Name="MenuButton3" Command="{Binding MenuButton3_ClickCommand}" Content="◀"/>
-					<Button Classes="MenuButton" Name="MenuButton4" Command="{Binding MenuButton4_ClickCommand}" Content="▶"/>
-					<Button Classes="MenuButton" Name="MenuButton5" Command="{Binding MenuButton5_ClickCommand}" Content="Start" Background="Blue" Opacity="1"/>
-					<Button Classes="MenuButton" Name="MenuButton6" Command="{Binding MenuButton6_ClickCommand}" Content=""/>
-					<Button Classes="MenuButton" Name="MenuButton7" Command="{Binding MenuButton7_ClickCommand}" Content=""/>
-					<Button Classes="MenuButton" Name="MenuButton8" Command="{Binding MenuButton8_ClickCommand}" Content="Menu" Background="Green" Opacity="1"/>
+					<Button Classes="MenuButton" Name="MenuButton1" Command="{Binding MenuButton1_ClickCommand}" Background="{Binding MenuButton1_Background}" Opacity="{Binding MenuButton1_Opacity}" Content="▲"/>
+					<Button Classes="MenuButton" Name="MenuButton2" Command="{Binding MenuButton2_ClickCommand}" Background="{Binding MenuButton2_Background}" Opacity="{Binding MenuButton2_Opacity}" Content="▼"/>
+					<Button Classes="MenuButton" Name="MenuButton3" Command="{Binding MenuButton3_ClickCommand}" Background="{Binding MenuButton3_Background}" Opacity="{Binding MenuButton3_Opacity}" Content="◀"/>
+					<Button Classes="MenuButton" Name="MenuButton4" Command="{Binding MenuButton4_ClickCommand}" Background="{Binding MenuButton4_Background}" Opacity="{Binding MenuButton4_Opacity}" Content="▶"/>
+					<Button Classes="MenuButton" Name="MenuButton5" Command="{Binding MenuButton5_ClickCommand}" Background="{Binding MenuButton5_Background}" Opacity="{Binding MenuButton5_Opacity}" Content="{Binding MenuButton5_Content}" FontSize="{Binding MenuButton5_FontSize}"/>
+					<Button Classes="MenuButton" Name="MenuButton6" Command="{Binding MenuButton6_ClickCommand}" Background="{Binding MenuButton6_Background}" Opacity="{Binding MenuButton6_Opacity}" Content="{Binding MenuButton6_Content}" FontSize="{Binding MenuButton6_FontSize}"/>
+					<Button Classes="MenuButton" Name="MenuButton7" Command="{Binding MenuButton7_ClickCommand}" Background="{Binding MenuButton7_Background}" Opacity="{Binding MenuButton7_Opacity}" Content=""/>
+					<Button Classes="MenuButton" Name="MenuButton8" Command="{Binding MenuButton8_ClickCommand}" Background="{Binding MenuButton8_Background}" Opacity="{Binding MenuButton8_Opacity}" Content="Menu" />
 				</StackPanel>
 			</Grid>
 		</Grid>
