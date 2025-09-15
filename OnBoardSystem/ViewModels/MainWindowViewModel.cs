@@ -28,6 +28,25 @@ namespace OnBoardSystem.ViewModels
             OprationViewTimer = new(OnOprationViewTimerTick, null, period, dueTime);
             //Pause on creation.
             OprationViewTimerPause();
+            //Instantiating ViewSwitcher class.
+            ViewSwitcher Views = new(this);
+            //Chech if LocomotiveSafetySystemFolder exists.
+            if (!File.Exists(LocomotiveSafetySystemFolder + "/setting.xml"))
+            {
+                //Set to initial view.
+                Views.SetupInitialView(ref CurrentView);
+                //Create LocomotiveSafetySystemFolder and setting.xml file.
+                Directory.CreateDirectory(LocomotiveSafetySystemFolder);
+                File.Create(LocomotiveSafetySystemFolder + "/setting.xml").Close();
+            }
+            else
+            {
+                //Set to manifest login view.
+                Views.SetupManifestLoginView(ref CurrentView);
+                //TODO: REMOVE THIS
+                //Views.SetupOprationView();
+                //SetCurrentView("OprationView");
+            }
         }
 
         #region UI refreash timers.
