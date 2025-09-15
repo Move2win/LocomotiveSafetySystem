@@ -14,10 +14,12 @@ namespace OnBoardSystem.Models
                 viewName == "MenuView")
             {
                 VarCurrentView = viewName;
+                MainWindowViewModel.OprationViewTimerPause();
             }
             else if (viewName == "OprationView")
             {
                 VarCurrentView = viewName;
+                MainWindowViewModel.OprationViewTimerResume();
             }
             else //TODO: DEBUG ONLY
             {

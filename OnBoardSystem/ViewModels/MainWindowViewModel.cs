@@ -12,6 +12,11 @@ namespace OnBoardSystem.ViewModels
         readonly string LocomotiveSafetySystemFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LocomotiveSafetySystem");
         //Current active view indicator
         string CurrentView = "InitialView";
+        //Create OprationViewTimer and related arguments.
+        private static Timer? OprationViewTimer;
+        private static readonly TimeSpan period = TimeSpan.Zero;
+        private static readonly TimeSpan dueTime = TimeSpan.FromSeconds(0.5);
+        private static bool isPaused = false;
 
         #endregion
 
@@ -20,7 +25,9 @@ namespace OnBoardSystem.ViewModels
             //Set clock timer interval to 1 seconds.
             Timer ClockTimer = new(OnClockTimerTick, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
             //Set Opration view UI refreash timer interval to 500 milliseconds.
-            Timer OprationViewTimer = new(OnOprationViewTimerTick, null, TimeSpan.Zero, TimeSpan.FromSeconds(0.5));
+            OprationViewTimer = new(OnOprationViewTimerTick, null, period, dueTime);
+            //Pause on creation.
+            OprationViewTimerPause();
         }
 
         #region UI refreash timers.
@@ -35,6 +42,26 @@ namespace OnBoardSystem.ViewModels
         private void OnOprationViewTimerTick(object? state)
         {
 
+        }
+
+        //Pause OprationViewTimer.
+        public static void OprationViewTimerPause()
+        {
+            if (OprationViewTimer != null && !isPaused)
+            {
+                isPaused = true;
+                OprationViewTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
+        }
+
+        //Resume OprationViewTimer.
+        public static void OprationViewTimerResume()
+        {
+            if (OprationViewTimer != null && isPaused)
+            {   
+                isPaused = false;
+                OprationViewTimer.Change(dueTime, period);
+            }
         }
         #endregion
 
