@@ -178,8 +178,8 @@ namespace OnBoardSystem.ViewModels
         [RelayCommand]
         public void MenuButton5_Click()
         {
-            ViewSwitcher viewSwitcher = new(this);
-            viewSwitcher.SetupInitialView();
+            ViewSwitcher Views = new(this);
+            Views.SetupInitialView(ref CurrentView);
         }
 
         //Clear
