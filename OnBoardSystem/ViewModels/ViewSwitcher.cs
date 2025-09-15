@@ -24,7 +24,7 @@
             mainWindowViewModel.MenuButton3_Background = "Gray";
             mainWindowViewModel.MenuButton3_Opacity = "0.2";
             mainWindowViewModel.MenuButton4_Background = "Gray";
-            mainWindowViewModel.MenuButton5_Opacity = "0.2";
+            mainWindowViewModel.MenuButton4_Opacity = "0.2";
             mainWindowViewModel.MenuButton5_Content = "Start";
             mainWindowViewModel.MenuButton5_Background = "Blue";
             mainWindowViewModel.MenuButton5_Opacity = "1.0";
