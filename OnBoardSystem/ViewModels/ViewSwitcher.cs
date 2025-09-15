@@ -1,9 +1,12 @@
-﻿namespace OnBoardSystem.ViewModels
+﻿using OnBoardSystem.Models;
+
+namespace OnBoardSystem.ViewModels
 {
     internal class ViewSwitcher(MainWindowViewModel mainWindowViewModel)
     {
-        public void SetupInitialView()
+        public void SetupInitialView(ref string varCurrentView)
         {
+            SetView.NameCheck(ref varCurrentView, "InitialView");
             //GridRow 0 KeyInfo Initialization
             mainWindowViewModel.TxtSpeed_Text = "0.0 KM/H";
             mainWindowViewModel.TxtAcceleration_Text = "▲ 0.0 KM/H/sec";
@@ -37,8 +40,9 @@
             mainWindowViewModel.MenuButton8_Background = "Green";
             mainWindowViewModel.MenuButton8_Opacity = "1";
         }
-        public void SetupRegisterView()
+        public void SetupRegisterView(ref string varCurrentView)
         {
+            SetView.NameCheck(ref varCurrentView, "RegisterView");
             //GridRow 0 KeyInfo Initialization
             //No need, already set in SetupInitialView(), this will only be called after SetupInitialView()
             //GridRow 1 Chart&Warning Initialization
@@ -65,8 +69,9 @@
             //mainWindowViewModel.MenuButton5_Background = "Blue";
             //mainWindowViewModel.MenuButton5_Opacity = "1";
         }
-        public void SetupManifestLoginView()
+        public void SetupManifestLoginView(ref string varCurrentView)
         {
+            SetView.NameCheck(ref varCurrentView, "ManifestLoginView");
             //GridRow 0 KeyInfo Initialization
             mainWindowViewModel.TxtSpeed_Text = "0.0 KM/H";
             mainWindowViewModel.TxtAcceleration_Text = "▲ 0.0 KM/H/sec";
@@ -97,8 +102,9 @@
             mainWindowViewModel.MenuButton6_Opacity = "1";
             mainWindowViewModel.MenuButton6_FontSize = "25";
         }
-        public void SetupOprationView()
+        public void SetupOprationView(ref string varCurrentView)
         {
+            SetView.NameCheck(ref varCurrentView, "OprationView");
             //GridRow 0 KeyInfo Initialization
             //No need, already set in SetupManifestLoginView()
             //GridRow 1 Chart&Warning Initialization
